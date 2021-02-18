@@ -13,10 +13,10 @@ client.registry
     .registerDefaults()
     .registerCommandsIn(path.join(__dirname, "commands"));
 
-client.on("ready", () => {
+client.once("ready", () => {
     console.log(`Logged in as ${client.user.tag}!`);
-    client.user.setStatus('dnd');
     client.user.setActivity(`the server!`, { type: 'WATCHING' }).then().catch(console.error);
+    client.user.setStatus('dnd');
 });
 
 const sqlite = require("sqlite");
