@@ -1,16 +1,18 @@
 const Commando = require("discord.js-commando");
 const client = new Commando.Client({
     owner: "136670979035365376",
-    commandPrefix: "~"
+    commandPrefix: "/"
 });
 
 const path = require("path");
 const fs = require("fs");
 client.registry
+    .registerDefaultTypes()
     .registerGroups([
-        ["commands", "A group of commands."],
+        ["test", "A group of test commands."],
     ])
-    .registerDefaults()
+    .registerDefaultGroups()
+	.registerDefaultCommands()
     .registerCommandsIn(path.join(__dirname, "commands"));
 
 client.once("ready", () => {
@@ -18,6 +20,8 @@ client.once("ready", () => {
     client.user.setActivity(`the server!`, { type: 'WATCHING' }).then().catch(console.error);
     client.user.setStatus('dnd');
 });
+
+client.on("error", console.error);
 
 const sqlite = require("sqlite");
 const sqlite3 = require("sqlite3");
