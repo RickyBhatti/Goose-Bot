@@ -9,7 +9,7 @@ const fs = require("fs");
 client.registry
     .registerDefaultTypes()
     .registerGroups([
-        ["test", "A group of test commands."],
+        ["utility", "A group of utility commands."]
     ])
     .registerDefaultGroups()
 	.registerDefaultCommands()
