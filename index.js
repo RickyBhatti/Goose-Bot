@@ -9,7 +9,7 @@ const fs = require("fs");
 client.registry
     .registerDefaultTypes()
     .registerGroups([
-        ["utility", "A group of utility commands."]
+        ["util", "A group of utility commands."]
     ])
     .registerDefaultGroups()
 	.registerDefaultCommands()
@@ -18,7 +18,7 @@ client.registry
 client.once("ready", () => {
     console.log(`Logged in as ${client.user.tag}!`);
     client.user.setActivity(`the server!`, { type: 'WATCHING' }).then().catch(console.error);
-    client.user.setStatus('dnd');
+    client.user.setStatus('online');
 });
 
 client.on("error", console.error);

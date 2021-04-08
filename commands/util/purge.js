@@ -4,7 +4,7 @@ module.exports = class PurgeCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'purge',
-			group: 'utility',
+			group: 'util',
 			memberName: 'purge',
 			description: 'Purges specified amount of messages from chat.',
             clientPermissions: [
@@ -12,7 +12,7 @@ module.exports = class PurgeCommand extends Command {
             ],
             throttling: {
                 usages: 1,
-                duration: 3,
+                duration: 3
             },
             args: [
                 {
@@ -25,7 +25,7 @@ module.exports = class PurgeCommand extends Command {
     }
 
     run(message, args) {
-        message.delete({setTimeout: 0});
+        message.delete();
         message.channel.bulkDelete(args.amount).catch(error => { console.log("[" + this.name + "] " + error.message) });
         return message.reply("deleted " + args.amount + " of messages.")
     }
