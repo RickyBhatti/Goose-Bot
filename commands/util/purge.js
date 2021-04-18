@@ -27,6 +27,6 @@ module.exports = class PurgeCommand extends Command {
     run(message, args) {
         message.delete();
         message.channel.bulkDelete(args.amount).catch(error => { console.log("[" + this.name + "] " + error.message) });
-        return message.reply("deleted " + args.amount + " of messages.")
+        return message.reply("deleted " + args.amount + " messages.")
     }
 }
