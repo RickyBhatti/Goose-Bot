@@ -1,8 +1,9 @@
 const config = require("./config.json");
-const Commando = require("discord.js-commando");
-const client = new Commando.Client({
+
+const commando = require("discord.js-commando");
+const client = new commando.Client({
     owner: config.ownerid,
-    commandPrefix: config.command_prefix
+    commandPrefix: config.commandPrefix
 });
 
 const path = require("path");
@@ -11,6 +12,7 @@ client.registry
     .registerDefaultTypes()
     .registerGroups([
         ["fun", "A group of fun commands"],
+        ["punishment", "A group of punishment commands."],
         ["util", "A group of utility commands."]
     ])
     .registerDefaultGroups()
@@ -21,8 +23,8 @@ client.registry
 
 client.once("ready", () => {
     console.log(`Logged in as ${client.user.tag}!`);
-    client.user.setActivity(`the server!`, { type: 'WATCHING' }).catch(console.error);
-    client.user.setStatus('online');
+    client.user.setActivity(config.activity, { type: 'WATCHING' }).catch(console.error);
+    client.user.setStatus(config.status);
 });
 
 if (config.debug) { client.on("debug", console.info); }

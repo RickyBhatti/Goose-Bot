@@ -1,6 +1,8 @@
 {
     "token": "",
     "ownerid": "",
-    "command_prefix": "/",
+    "commandPrefix": "/",
+    "status": "online",
+    "activity": "the server!",
     "debug": false
 }
