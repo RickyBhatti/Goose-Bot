@@ -5,7 +5,6 @@ const client = new Commando.Client({
 });
 
 const path = require("path");
-const fs = require("fs");
 client.registry
     .registerDefaultTypes()
     .registerGroups([
