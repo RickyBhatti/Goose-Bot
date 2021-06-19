@@ -6,7 +6,7 @@ module.exports = class CoinflipCommand extends Command {
             name: 'coinflip',
 			group: 'fun',
 			memberName: 'coinflip',
-			description: 'Purges specified amount of messages from chat.',
+			description: 'Perform a coin flip!',
             throttling: {
                 usages: 1,
                 duration: 3
