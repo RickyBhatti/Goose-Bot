@@ -13,7 +13,7 @@ client.registry
     ])
     .registerDefaultGroups()
 	.registerDefaultCommands({
-        ping: false
+        ping: false // Due to us having a custom ping command.
     })
     .registerCommandsIn(path.join(__dirname, "commands"));
 
