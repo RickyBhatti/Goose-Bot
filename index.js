@@ -1,7 +1,7 @@
 const config = require("./config.json");
 
-const Commando = require("discord.js-commando"); // Has to be capitalized, otherwise, DiscordJS doesn't like it.
-const client = new Commando.Client({
+const commando = require("discord.js-commando");
+const client = new commando.Client({
     owner: config.ownerid,
     commandPrefix: config.commandPrefix
 });
@@ -34,7 +34,7 @@ client.on("error", console.error);
 const sqlite = require("sqlite"), sqlite3 = require("sqlite3");
 client.setProvider(
     sqlite.open({filename: 'database.db', driver: sqlite3.Database})
-    .then(db => new Commando.SQLiteProvider(db))
+    .then(db => new commando.SQLiteProvider(db))
     .catch(console.error)
 );
 
