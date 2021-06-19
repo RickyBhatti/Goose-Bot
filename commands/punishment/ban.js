@@ -23,12 +23,14 @@ module.exports = class BanCommand extends Command {
                 {
                     key: 'duration',
                     prompt: 'How long would you like to ban this user for?',
-                    type: 'member'
+                    type: 'member',
+                    default: 0
                 },
                 {
                     key: 'reason',
                     prompt: 'What is your reason for banning the user?',
-                    type: 'string'
+                    type: 'string',
+                    default: 'User has been banned.'
                 }
             ]
         });
@@ -36,7 +38,26 @@ module.exports = class BanCommand extends Command {
 
     run(message, args) {
         message.delete();
-        // TODO: Implement the logic.
+        args.user.ban({
+            reason: args.reason
+        }).then(() => {
+            message.channel.send({ // TOOD: Finish the embed for banning.
+                embed: {
+                    title: "User Banned",
+                    color: "FF0000",
+                    fields: [
+                        {
+                            name: "TODO",
+                            value: "TODO"
+                        }
+                    ],
+                    timestamp: new Date(),
+                    footer: {
+                        text: message.member.user.tag
+                    }
+                }
+            });
+        }).catch((error) => {console.log(error)});
         // TODO: Implement punishment logging to a set Discord channel.
     }
 }

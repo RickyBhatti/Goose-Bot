@@ -23,7 +23,8 @@ module.exports = class KickCommand extends Command {
                 {
                     key: 'reason',
                     prompt: 'What is your reason for kicking the user?',
-                    type: 'string'
+                    type: 'string',
+                    default: 'User has been kicked.'
                 }
             ]
         });
@@ -31,7 +32,9 @@ module.exports = class KickCommand extends Command {
 
     run(message, args) {
         message.delete();
-        args.user.kick().then(() => {
+        args.user.kick({
+            reason: args.kick
+        }).then(() => {
             message.channel.send({ // TOOD: Finish the embed for kicking.
                 embed: {
                     title: "User Kicked",
