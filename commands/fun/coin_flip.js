@@ -4,6 +4,7 @@ module.exports = class CoinflipCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'coinflip',
+            aliases: ['cf'],
 			group: 'fun',
 			memberName: 'coinflip',
 			description: 'Perform a coin flip!',
