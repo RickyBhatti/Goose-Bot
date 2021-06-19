@@ -1,8 +1,8 @@
 const config = require("./config.json");
 const Commando = require("discord.js-commando");
 const client = new Commando.Client({
-    owner: "136670979035365376",
-    commandPrefix: "/"
+    owner: config.ownerid,
+    commandPrefix: config.command_prefix
 });
 
 const path = require("path");
@@ -32,7 +32,7 @@ client.on("error", console.error);
 const sqlite = require("sqlite");
 const sqlite3 = require("sqlite3");
 client.setProvider(
-    sqlite.open({ filename: 'database.db', driver: sqlite3.Database })
+    sqlite.open({filename: 'database.db', driver: sqlite3.Database})
     .then(db => new Commando.SQLiteProvider(db))
     .catch(console.error)
 );

@@ -10,12 +10,13 @@ module.exports = class CoinflipCommand extends Command {
 			description: 'Perform a coin flip!',
             throttling: {
                 usages: 1,
-                duration: 3
+                duration: 2
             }
         });
     }
 
-    run(message) { // TODO: Complete the logic of the command.
+    run(message) {
         message.delete();
+        message.reply(`I have flipped a coin and it landed on **${Math.random() <= 0.5 ? "Heads" : "Tails"}**.`);
     }
 }

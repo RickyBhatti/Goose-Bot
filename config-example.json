@@ -1,4 +1,6 @@
 {
     "token": "",
+    "ownerid": "",
+    "command_prefix": "/",
     "debug": false
 }
