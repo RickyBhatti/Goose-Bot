@@ -1,6 +1,3 @@
-const dialogflow = require("dialogflow");
-const dfClient = new dialogflow.SessionsClient();
-
 const Commando = require("discord.js-commando");
 const client = new Commando.Client({
     owner: "136670979035365376",
@@ -28,7 +25,6 @@ client.on("warn", console.warn);
 client.on("error", console.error);
 
 client.on("message", (msg) => {
-    // TODO: Implement DialogflowJS.
     if (client.user.id == msg.author.id) { return; }
     if (msg.mentions.everyone) { return; }
     console.log(msg.content);
