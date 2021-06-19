@@ -21,7 +21,7 @@ module.exports = class PurgeCommand extends Command {
                     type: 'integer'
                 }
             ]
-        })
+        });
     }
 
     run(message, args) {

@@ -7,16 +7,14 @@ module.exports = class PingCommand extends Command {
 			group: 'util',
 			memberName: 'ping',
 			description: 'Displays the current bot ping.',
-            clientPermissions: [],
             throttling: {
                 usages: 1,
                 duration: 10
-            },
-            args: []
-        })
+            }
+        });
     }
 
-    async run(message, args) {
+    async run(message) {
         message.delete();
         await message.channel.send("Pinging.").then(responesMessage => {
             responesMessage.edit({
