@@ -1,3 +1,4 @@
+const config = require("./config.json");
 const Commando = require("discord.js-commando");
 const client = new Commando.Client({
     owner: "136670979035365376",
@@ -5,6 +6,7 @@ const client = new Commando.Client({
 });
 
 const path = require("path");
+const fs = require("fs");
 client.registry
     .registerDefaultTypes()
     .registerGroups([
@@ -22,6 +24,8 @@ client.once("ready", () => {
     client.user.setActivity(`the server!`, { type: 'WATCHING' }).catch(console.error);
     client.user.setStatus('online');
 });
+
+if (config.debug) { client.on("debug", console.info); }
 client.on("warn", console.warn);
 client.on("error", console.error);
 
@@ -33,5 +37,4 @@ client.setProvider(
     .catch(console.error)
 );
 
-const config = require("./config.json");
 client.login(config.token);
