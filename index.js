@@ -3,7 +3,8 @@ const config = require("./config.json");
 const commando = require("discord.js-commando");
 const client = new commando.Client({
     owner: config.ownerid,
-    commandPrefix: config.commandPrefix
+    commandPrefix: config.commandPrefix,
+    unknownCommandResponse: false
 });
 
 const path = require("path");
