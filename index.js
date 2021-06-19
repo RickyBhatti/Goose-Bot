@@ -12,7 +12,9 @@ client.registry
         ["util", "A group of utility commands."]
     ])
     .registerDefaultGroups()
-	.registerDefaultCommands()
+	.registerDefaultCommands({
+        ping: false
+    })
     .registerCommandsIn(path.join(__dirname, "commands"));
 
 client.once("ready", () => {
