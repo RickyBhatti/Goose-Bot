@@ -13,6 +13,17 @@ class DatabaseHandler {
     /*
         https://www.npmjs.com/package/sqlite
     */
+    async get(query, options) {
+        return await sqlite.get(predefinedQueries[query], options);
+    }
+
+    async getAll(query, options) {
+        return await sqlite.all(predefinedQueries[query], options);
+    }
+
+    async execute(query, options) {
+        return await sqlite.run(predefinedQueries[query], options);
+    }
 }
 
 module.exports = DatabaseHandler;
