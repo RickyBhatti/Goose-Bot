@@ -7,7 +7,7 @@ class DatabaseHandler {
     #database;
 
     constructor() {
-        this.#database = sqlite.open({filename: 'database.db', driver: sqlite3.Database}).catch(console.error);
+        this.#database = sqlite.open({filename: './data/database.db', driver: sqlite3.Database}).catch(console.error);
     }
 
     /*
