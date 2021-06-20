@@ -1,4 +1,6 @@
 const config = require("./config.json");
+const DatabaseHandler = require("./database/database");
+const dbHandler = new DatabaseHandler();
 
 const commando = require("discord.js-commando");
 const client = new commando.Client({
@@ -40,8 +42,11 @@ client.setProvider( // This is used for the built-in prefix configuration.
 );
 
 //#region Testing Code
-const DatabaseHandler = require("./database/database");
-const dbHandler = new DatabaseHandler();
+setTimeout(() => {
+    dbHandler.execute('test', {
+        ':name': 'testName'
+    });
+}, 2500);
 //#endregion
 
 client.login(config.token);

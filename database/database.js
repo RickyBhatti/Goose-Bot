@@ -1,28 +1,39 @@
 const sqlite = require("sqlite"), sqlite3 = require("sqlite3");
 const predefinedQueries = {
-    "test": "test"
+    "test": "INSERT INTO `test` (name) VALUES (:name);"
 }
 
 class DatabaseHandler {
     #database;
 
     constructor() {
-        this.#database = sqlite.open({filename: './data/database.db', driver: sqlite3.Database}).catch(console.error);
+        (async () => {
+            this.#database = await sqlite.open({filename: './data/database.db', driver: sqlite3.Database}).catch((error) => {console.log(error)});
+        })();
     }
 
     /*
         https://www.npmjs.com/package/sqlite
     */
     async get(query, options) {
-        return await sqlite.get(predefinedQueries[query], options);
+        if (this.#database == null) { return null; }
+
+        const result = await this.#database.get(predefinedQueries[query], options).catch((error) => {console.log(error)});
+        return result;
     }
 
     async getAll(query, options) {
-        return await sqlite.all(predefinedQueries[query], options);
+        if (this.#database == null) { return null; }
+
+        const result = await this.#database.all(predefinedQueries[query], options).catch((error) => {console.log(error)});
+        return result;
     }
 
     async execute(query, options) {
-        return await sqlite.run(predefinedQueries[query], options);
+        if (this.#database == null) { return null; }
+
+        const result = await this.#database.run(predefinedQueries[query], options).catch((error) => {console.log(error)});
+        return result;
     }
 }
 
