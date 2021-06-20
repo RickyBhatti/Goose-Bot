@@ -35,14 +35,14 @@ module.exports = class KickCommand extends Command {
         args.user.kick({
             reason: args.kick
         }).then(() => {
-            message.channel.send({ // TOOD: Finish the embed for kicking.
+            message.channel.send({
                 embed: {
-                    title: "User Kicked",
+                    title: args.user + " has been kicked from the server sucessfully.",
                     color: "FF0000",
                     fields: [
                         {
-                            name: "TODO",
-                            value: "TODO"
+                            name: ":notepad_spiral: Reason",
+                            value: args.reason
                         }
                     ],
                     timestamp: new Date(),

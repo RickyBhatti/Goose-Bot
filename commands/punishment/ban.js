@@ -41,14 +41,18 @@ module.exports = class BanCommand extends Command {
         args.user.ban({
             reason: args.reason
         }).then(() => {
-            message.channel.send({ // TOOD: Finish the embed for banning.
+            message.channel.send({
                 embed: {
-                    title: "User Banned",
+                    title: args.user + " has been banned from the server sucessfully.",
                     color: "FF0000",
                     fields: [
                         {
-                            name: "TODO",
-                            value: "TODO"
+                            name: ":notepad_spiral: Reason",
+                            value: args.reason
+                        },
+                        {
+                            name: ":clock12: Duration",
+                            value: args.duration
                         }
                     ],
                     timestamp: new Date(),
