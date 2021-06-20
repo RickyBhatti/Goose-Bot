@@ -1,6 +1,7 @@
 # Custom Files
 config.json
 *.code-workspace
+*.db
 
 # Logs
 logs
