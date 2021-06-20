@@ -1,6 +1,6 @@
 const config = require("./config.json");
 const DatabaseHandler = require("./database/database");
-const dbHandler = new DatabaseHandler();
+dbHandler = new DatabaseHandler();
 
 const commando = require("discord.js-commando");
 const client = new commando.Client({
