@@ -39,4 +39,9 @@ client.setProvider( // This is used for the built-in prefix configuration.
     .catch(console.error)
 );
 
+//#region Testing Code
+const DatabaseHandler = require("./database/database");
+const dbHandler = new DatabaseHandler();
+//#endregion
+
 client.login(config.token);

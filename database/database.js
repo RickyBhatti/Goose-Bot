@@ -1,7 +1,7 @@
 const sqlite = require("sqlite"), sqlite3 = require("sqlite3");
-const predefinedQueries = [
-    [""] = "",
-]
+const predefinedQueries = {
+    "test": "test"
+}
 
 class DatabaseHandler {
     #database;
