@@ -33,7 +33,7 @@ client.on("warn", console.warn);
 client.on("error", console.error);
 
 const sqlite = require("sqlite"), sqlite3 = require("sqlite3");
-client.setProvider(
+client.setProvider( // This is used for the built-in prefix configuration.
     sqlite.open({filename: 'database.db', driver: sqlite3.Database})
     .then(db => new commando.SQLiteProvider(db))
     .catch(console.error)
