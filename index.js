@@ -10,7 +10,6 @@ const client = new commando.Client({
 });
 
 const path = require("path");
-const fs = require("fs");
 client.registry
     .registerDefaultTypes()
     .registerGroups([
