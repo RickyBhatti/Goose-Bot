@@ -19,21 +19,21 @@ class DatabaseHandler {
         https://www.npmjs.com/package/sqlite
     */
     async get(query, options) {
-        if (this.#database == null) { return null; }
+        if (this.#database == null) { return Error("Database connection has not been established."); }
 
         const result = await this.#database.get(predefinedQueries[query], options).catch((error) => {console.log(error)});
         return result;
     }
 
     async getAll(query, options) {
-        if (this.#database == null) { return null; }
+        if (this.#database == null) { return Error("Database connection has not been established."); }
 
         const result = await this.#database.all(predefinedQueries[query], options).catch((error) => {console.log(error)});
         return result;
     }
 
     async execute(query, options) {
-        if (this.#database == null) { return null; }
+        if (this.#database == null) { return Error("Database connection has not been established."); }
 
         const result = await this.#database.run(predefinedQueries[query], options).catch((error) => {console.log(error)});
         return result;
