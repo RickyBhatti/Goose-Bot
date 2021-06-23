@@ -6,9 +6,10 @@ const predefinedQueries = {
 class DatabaseHandler {
     #database;
 
-    constructor() {
+    constructor(commando, client) {
         (async () => {
             this.#database = await sqlite.open({filename: './data/database.db', driver: sqlite3.Database}).catch((error) => {console.log(error)});
+            client.setProvider(new commando.SQLiteProvider(this.#database));
         })();
     }
 

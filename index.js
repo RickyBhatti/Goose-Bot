@@ -1,6 +1,4 @@
 const config = require("./config.json");
-const DatabaseHandler = require("./database/database");
-dbHandler = new DatabaseHandler();
 
 const commando = require("discord.js-commando");
 const client = new commando.Client({
@@ -8,6 +6,8 @@ const client = new commando.Client({
     commandPrefix: config.commandPrefix,
     unknownCommandResponse: false
 });
+const DatabaseHandler = require("./database/database");
+dbHandler = new DatabaseHandler(commando, client);
 
 const path = require("path");
 client.registry
@@ -32,13 +32,6 @@ client.once("ready", () => {
 if (config.debug) { client.on("debug", console.info); }
 client.on("warn", console.warn);
 client.on("error", console.error);
-
-const sqlite = require("sqlite"), sqlite3 = require("sqlite3");
-client.setProvider( // This is used for the built-in prefix configuration.
-    sqlite.open({filename: './data/setting.db', driver: sqlite3.Database})
-    .then(db => new commando.SQLiteProvider(db))
-    .catch(console.error)
-);
 
 //#region Testing Code
 setTimeout(() => {
