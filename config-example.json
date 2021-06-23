@@ -1,6 +1,7 @@
 {
     "token": "",
     "ownerid": "",
+    "database": "./data/database.db",
     "commandPrefix": "/",
     "status": "online",
     "activity": "the server!",
