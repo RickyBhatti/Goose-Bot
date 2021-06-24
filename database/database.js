@@ -1,5 +1,3 @@
-const config = require("./../config.json");
-
 const sqlite = require("sqlite"), sqlite3 = require("sqlite3");
 const predefinedQueries = {
     "test": "INSERT INTO `test` (name) VALUES (:name);"
@@ -13,6 +11,7 @@ class DatabaseHandler {
     }
 
     async initialize() {
+        const config = require("./../config.json");
         let databaseConnectionPromise = new Promise((resolve, reject) => {
             sqlite.open({filename: config.database, driver: sqlite3.Database}).then(db => {
                 this.#database = db;
