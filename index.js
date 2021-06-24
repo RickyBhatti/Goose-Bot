@@ -6,6 +6,7 @@ const client = new commando.Client({
     commandPrefix: config.commandPrefix,
     unknownCommandResponse: false
 });
+
 const DatabaseHandler = require("./database/database");
 dbHandler = new DatabaseHandler(commando, client);
 
