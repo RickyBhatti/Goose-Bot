@@ -9,10 +9,22 @@ class DatabaseHandler {
     #database;
 
     constructor(commando, client) {
-        (async () => {
-            this.#database = await sqlite.open({filename: config.database, driver: sqlite3.Database}).catch((error) => {console.log(error)});
-            client.setProvider(new commando.SQLiteProvider(this.#database));
-        })();
+        this.commando = commando, this.client = client;
+    }
+
+    async initialize() {
+        let databaseConnectionPromise = new Promise((resolve, reject) => {
+            sqlite.open({filename: config.database, driver: sqlite3.Database}).then(db => {
+                this.#database = db;
+                this.client.setProvider(new this.commando.SQLiteProvider(this.#database));
+                resolve();
+            }).catch((error) => {
+                console.log(error)
+                reject();
+            });
+        });
+
+        await databaseConnectionPromise;
     }
 
     /*

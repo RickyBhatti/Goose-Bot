@@ -9,29 +9,35 @@ const client = new commando.Client({
 const DatabaseHandler = require("./database/database");
 dbHandler = new DatabaseHandler(commando, client);
 
-const path = require("path");
-client.registry
-    .registerDefaultTypes()
-    .registerGroups([
-        ["fun", "A group of fun commands"],
-        ["punishment", "A group of punishment commands."],
-        ["util", "A group of utility commands."]
-    ])
-    .registerDefaultGroups()
-	.registerDefaultCommands({
-        ping: false // Due to us having a custom ping command.
-    })
-    .registerCommandsIn(path.join(__dirname, "commands"));
+async function initialize() {
+    await dbHandler.initialize()
 
-client.once("ready", () => {
-    console.log(`Logged in as ${client.user.tag}!`);
-    client.user.setActivity(config.activity, { type: 'WATCHING' }).catch(console.error);
-    client.user.setStatus(config.status);
-});
+    const path = require("path");
+    client.registry
+        .registerDefaultTypes()
+        .registerGroups([
+            ["fun", "A group of fun commands"],
+            ["punishment", "A group of punishment commands."],
+            ["util", "A group of utility commands."]
+        ])
+        .registerDefaultGroups()
+        .registerDefaultCommands({
+            ping: false // Due to us having a custom ping command.
+        })
+        .registerCommandsIn(path.join(__dirname, "commands"));
 
-if (config.debug) { client.on("debug", console.info); }
-client.on("warn", console.warn);
-client.on("error", console.error);
+    client.once("ready", () => {
+        console.log(`Logged in as ${client.user.tag}!`);
+        client.user.setActivity(config.activity, { type: 'WATCHING' }).catch(console.error);
+        client.user.setStatus(config.status);
+    });
+
+    if (config.debug) { client.on("debug", console.info); }
+    client.on("warn", console.warn);
+    client.on("error", console.error);
+
+    client.login(config.token);
+} 
 
 //#region Testing Code
 setTimeout(() => {
@@ -41,4 +47,4 @@ setTimeout(() => {
 }, 2500);
 //#endregion
 
-client.login(config.token);
+initialize()
