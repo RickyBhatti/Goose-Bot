@@ -1,3 +1,4 @@
+//#region Constants
 const config = require("./config.json");
 
 const commando = require("discord.js-commando");
@@ -9,7 +10,9 @@ const client = new commando.Client({
 
 const DatabaseHandler = require("./database/database");
 dbHandler = new DatabaseHandler(commando, client);
+//#endregion
 
+//#region Core Methods
 async function initialize() {
     await dbHandler.initialize();
 
@@ -40,6 +43,9 @@ async function initialize() {
     client.login(config.token);
 } 
 
+initialize()
+//#endregion
+
 //#region Testing Code
 setTimeout(() => {
     dbHandler.execute('test', {
@@ -47,5 +53,3 @@ setTimeout(() => {
     });
 }, 2500);
 //#endregion
-
-initialize()
