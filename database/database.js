@@ -18,7 +18,7 @@ class DatabaseHandler {
                 this.client.setProvider(new this.commando.SQLiteProvider(this.#database));
                 resolve();
             }).catch((error) => {
-                console.log(error)
+                console.log(error);
                 reject();
             });
         });

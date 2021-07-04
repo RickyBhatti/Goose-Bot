@@ -11,7 +11,7 @@ const DatabaseHandler = require("./database/database");
 dbHandler = new DatabaseHandler(commando, client);
 
 async function initialize() {
-    await dbHandler.initialize()
+    await dbHandler.initialize();
 
     const path = require("path");
     client.registry
