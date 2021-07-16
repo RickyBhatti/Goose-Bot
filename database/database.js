@@ -18,10 +18,10 @@ class DatabaseHandler {
     async initialize() {
         const config = require("./../config.json");
         let databaseConnectionPromise = new Promise((resolve, reject) => {
-            sqlite.open({filename: config.database, driver: sqlite3.Database}).then(db => {
+            sqlite.open({filename: config.database, driver: sqlite3.Database}).then(async (db) => {
                 this.#database = db;
                 this.client.setProvider(new this.commando.SQLiteProvider(this.#database));
-                await this.createDatabases;
+                await this.createDatabases();
                 resolve();
             }).catch((error) => {
                 console.log(error);
