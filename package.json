@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "mocha"
+    "test": "mocha \"test/**/*.test.js\""
   },
   "dependencies": {
     "discord.js": "^12.5.3",
