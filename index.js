@@ -45,11 +45,3 @@ async function initialize() {
 
 initialize()
 //#endregion
-
-//#region Testing Code
-setTimeout(() => {
-    dbHandler.execute('test', {
-        ':name': 'testName'
-    });
-}, 2500);
-//#endregion

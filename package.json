@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "start": "node ./index.js",
     "test": "mocha \"test/**/*.test.js\""
   },
   "dependencies": {
