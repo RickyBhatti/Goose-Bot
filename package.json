@@ -1,4 +1,8 @@
 {
+  "name": "goose-bot",
+  "description": "A custom bot made using DiscordJS.",
+  "version": "0.0-dev",
+  "author": "ricky",
   "scripts": {
     "start": "node ./index.js",
     "test": "mocha \"test/**/*.test.js\""
@@ -12,5 +16,13 @@
   "devDependencies": {
     "assert": "^2.0.0",
     "mocha": "^9.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RickyBGamez/Goose-Bot.git"
+  },
+  "homepage": "https://github.com/RickyBGamez/Goose-Bot",
+  "bugs": {
+    "url": "https://github.com/RickyBGamez/Goose-Bot/issues"
   }
 }
