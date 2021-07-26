@@ -25,17 +25,17 @@ module.exports = class MemberCountCommand extends Command {
                 fields: [
                     {
                         name: "Total",
-                        value: `${message.guild.members.cache.size}`,
+                        value: message.guild.members.cache.size,
                         inline: true
                     },
                     {
                         name: "Humans",
-                        value: `${message.guild.members.cache.filter(m => m.user.bot === false).size}`,
+                        value: message.guild.members.cache.filter(m => m.user.bot === false).size,
                         inline: true
                     },
                     {
                         name: "Bots",
-                        value: `${message.guild.members.cache.filter(m => m.user.bot === true).size}`,
+                        value: message.guild.members.cache.filter(m => m.user.bot === true).size,
                         inline: true
                     }
                 ],

@@ -26,7 +26,7 @@ module.exports = class PurgeCommand extends Command {
 
     run(message, args) {
         message.delete();
-        message.channel.bulkDelete(args.amount).then(() => { // Can't bulk delete messages older than 14 days.
+        message.channel.bulkDelete(args.amount).then(() => { // NOTE: Can't bulk delete messages older than 14 days.
             message.reply("deleted " + args.amount + " messages.");
         }).catch(error => {
             console.log("[" + this.name + "] " + error.message)
