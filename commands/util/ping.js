@@ -34,7 +34,8 @@ module.exports = class PingCommand extends Command {
                     ],
                     timestamp: new Date(),
                     footer: {
-                        text: message.member.user.tag
+                        text: message.member.user.tag,
+                        icon_url: message.member.user.avatarURL
                     }
                 }
             });
