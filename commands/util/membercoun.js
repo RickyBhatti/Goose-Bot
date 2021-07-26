@@ -15,7 +15,7 @@ module.exports = class MemberCountCommand extends Command {
         });
     }
 
-    async run(message) {
+    run(message) {
         message.delete();
         message.channel.send({
             content: "",
