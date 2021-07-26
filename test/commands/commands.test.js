@@ -6,6 +6,12 @@ const fs = require('fs');
     This test currently only supports one sub-folder within the commands folder, this test will be changed down the road to be recursive thus supporting multiple sub-folders.
 */
 
+function readDirectory(directory) {
+    // TODO: Implement recursive directory reading.
+}
+
+readDirectory('./commands/');
+
 fs.readdir('./commands/', (err, directories) => {
     for (let directory of directories) {
         fs.readdir('./commands/' + directory, (err, files) => {
