@@ -4,10 +4,10 @@ module.exports = class PingCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'membercount',
-            aliases: ['mc'],
+            aliases: ['mc', 'mcount'],
 			group: 'util',
 			memberName: 'membercount',
-			description: 'Displays the current member count of the Guild.',
+			description: 'Displays the current member count of the guild.',
             throttling: {
                 usages: 1,
                 duration: 10
