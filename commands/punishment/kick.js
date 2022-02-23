@@ -3,9 +3,9 @@ const { Command } = require('discord.js-commando');
 module.exports = class KickCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'kick',
+            name: 'kick2',
 			group: 'punishment',
-			memberName: 'kick',
+			memberName: 'kick2',
 			description: 'Kicks the specified client from the guild.',
             clientPermissions: [
                 ['KICK_MEMBERS']

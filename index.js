@@ -8,13 +8,13 @@ const client = new commando.Client({
     unknownCommandResponse: false
 });
 
-const DatabaseHandler = require("./database/database");
-dbHandler = new DatabaseHandler(commando, client);
+//const DatabaseHandler = require("./database/database");
+//dbHandler = new DatabaseHandler(commando, client);
 //#endregion
 
 //#region Core Methods
 async function initialize() {
-    await dbHandler.initialize();
+    //await dbHandler.initialize();
 
     const path = require("path");
     client.registry
@@ -26,6 +26,7 @@ async function initialize() {
         ])
         .registerDefaultGroups()
         .registerDefaultCommands({
+            kick: false,
             ping: false // Due to us having a custom ping command.
         })
         .registerCommandsIn(path.join(__dirname, "commands"));
@@ -39,6 +40,14 @@ async function initialize() {
     if (config.debug) { client.on("debug", console.info); }
     client.on("warn", console.warn);
     client.on("error", console.error);
+
+    client.on("message", (message) => {
+        message.channel.messages.fetch({ limit: 10 }).then((messages) => {
+            messages.forEach((message) => {
+                console.log(message.content);
+            });
+        });
+    })
 
     client.login(config.token);
 } 
